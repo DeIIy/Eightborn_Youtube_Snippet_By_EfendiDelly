@@ -1,8 +1,22 @@
 # ✂️ YTcutter Kurulum Rehberi
 
-> **📢 ÖNEMLİ: Test ve Paylaşım**
->
-> Bu aracı kurup ilk videonuzu kestikten sonra, sistemin sorunsuz çalıştığını doğrulamak için editinizi (YouTube veya benzeri bir platforma yükleyerek) lütfen **[r/eightborn_next](https://www.reddit.com/r/eightborn_next/)** subreddit’inde paylaşın.
+---
+
+## 🌐 Topluluk Katkısı
+
+Öğreneceğiniz yöntemlerle hazırlayacağınız o harika içerikleri **[r/eightborn_next](https://www.reddit.com/r/eightborn_next/)** subreddit’inde bağlantı sekmesiyle  paylaşırsanız:
+
+- Link olarak paylaşıldığından izlenmeler YouTube (veya paylaştığın platform) hanene yazılır.
+- Yayıncılar editleri sunucuya girmeden önce hızlıca kaydırarak inceleyebilir.
+- Editler dağılmadan tek bir platformda toplanır.
+- Edit süreçleri hızlanır ve sadeleşir.
+- Topluluk birlikte büyür.
+
+
+
+👉 https://www.reddit.com/r/eightborn_next/
+
+Şimdi, hazırsanız teknik detaylara geçelim! 🎬
 
 ---
 
@@ -12,7 +26,7 @@ Bu rehber, **yt-dlp** ve **FFmpeg** kullanarak videoları verimli bir şekilde i
 
 ## 📂 Çalışma Alanı Kurulumu
 
-> **Not:** Yol (PATH) sorunlarını önlemek için tüm araçlar C: sürücüsü altında tek bir klasörde toplanacaktır.
+> **Not:** Olası sorunlarını önlemek için tüm araçlar C: sürücüsü altında tek bir klasörde toplanacaktır.
 
 1. Komut satırını açın (`cmd.exe`).
 
@@ -29,11 +43,10 @@ cd C:\YTcutter
 
 ### 1️⃣ YT-DLP Kurulumu
 
-`yt-dlp`, YouTube ve benzeri platformlardan video indirmek için kullanılan bir komut satırı aracıdır.
+YouTube üzerinden video indirmek için kullanacağınız **[YT-DLP](https://github.com/yt-dlp/yt-dlp#release-files)** aracını indirin.
 
-- GitHub üzerinden **yt-dlp.exe** dosyasını indirin.
-- İndirdiğiniz **yt-dlp.exe** dosyasını `C:\YTcutter` klasörüne taşıyın.
-- Kurulumu doğrulayın:
+- İndirdiğiniz dosyayı `C:\YTcutter` klasörüne taşıyın.
+- Şimdi konsol pencerenize geri dönün ve şu komutu girin:
 
 ```cmd
 yt-dlp
@@ -46,12 +59,10 @@ yt-dlp
 
 ### 2️⃣ FFmpeg Kurulumu
 
-`FFmpeg`, indirilen videoları kesmek ve işlemek için kullanılır.
+İndirilen videoları kesmek, birleştirmek ve işlemek için gerekli olan **[FFMPEG](https://www.gyan.dev/ffmpeg/builds/ffmpeg-release-essentials.zip)** kütüphanesini indirin.
 
-- FFmpeg’in Windows sürümünü indirin.
 - Arşivi açın ve yalnızca `bin/ffmpeg.exe` dosyasını çıkartın.
-- `ffmpeg.exe` dosyasını `C:\YTcutter` klasörüne kopyalayın.
-- Kurulumu test edin:
+- `ffmpeg.exe` dosyasını `C:\YTcutter` klasörüne kopyalayın ve şu komutu girin:
 
 ```cmd
 ffmpeg
@@ -61,31 +72,73 @@ ffmpeg
 
 ---
 
-## 🚀 Kullanım Rehberi
+## 🚀 YT-DLP Akıllı Kesit İndirici Rehberi
 
-Kurulum tamamlandıktan sonra aşağıdaki komut ile videonun belirli bir bölümünü indirebilirsiniz.
+Bu rehber, YouTube videolarının **yalnızca belirli bir bölümünü** (ör. 6–10 saniyelik bir klip) **en yüksek kalitede ve hatasız** şekilde indirmek için hazırlanmıştır.  
+Süreci hızlandırmak adına komutları manuel yazmak yerine **Yapay Zeka (ChatGPT, Gemini vb.)** kullanılır.
 
-### Temel Komut Yapısı
+> **Ön Hazırlık:**  
+> `yt-dlp.exe` ve `ffmpeg.exe` dosyalarının `C:\YTcutter` klasörü içinde bulunduğundan emin olun.
 
-```cmd
-yt-dlp "YOUTUBE_LINKI" --download-sections "*BASLANGIC_SURESI-BITIS_SURESI"
+---
+
+## 🟢 1. Aşama: Yapay Zekayı Hazırlama (Prompt)
+
+İndirme komutunu her seferinde elle yazmak yerine, yapay zekanın **standart ve hatasız** komut üretmesi için aşağıdaki **Görev Tanımı** metnini **bir kez** ChatGPT veya Gemini’ye gönderin.
+
+### 📋 Kopyalanacak Metin (Prompt)
+
+```plaintext
+Sen bir `yt-dlp` komut satırı oluşturucususun. Görevin, sana vereceğim değişkenleri kullanarak YouTube videolarının belirli bölümlerini indirmeye yarayan komut satırı kodunu hazırlamaktır.
+
+Kullanman gereken temel kod şablonu şudur:
+yt-dlp --download-sections "*[BAŞLANGIÇ]-[BİTİŞ]" --force-keyframes-at-cuts "[VIDEO_LINKI]" -o [DOSYA_ADI]
+
+Kurallar:
+1. Sana "Zaman Aralığı", "Video Linki" ve "Dosya Adı" verilecek.
+2. Bu verileri yukarıdaki şablonda ilgili yerlere yerleştir.
+3. Çıktı olarak SADECE kodu ver, başka hiçbir açıklama, giriş veya sonuç cümlesi yazma.
+4. Kod bloğu ("```bash") kullan.
 ```
 
-### Parametreler
+---
 
-| Argüman            | Açıklama                     | Örnek                  |
-|--------------------|------------------------------|------------------------|
-| YOUTUBE_LINKI      | Videonun tam bağlantısı       | https://youtu.be/...   |
-| BASLANGIC_SURESI   | Klip başlangıç zamanı         | 10:00                  |
-| BITIS_SURESI       | Klip bitiş zamanı             | 10:30                  |
+## 🟡 2. Aşama: Video Bilgilerini Girme
 
-### Örnek
+Yapay zeka görevi kabul ettikten sonra, indirmek istediğiniz **her yeni video** için aşağıdaki şablonu doldurup gönderin.
 
-```cmd
-yt-dlp "https://www.youtube.com/watch?v=dQw4w9WgXcQ" --download-sections "*10:00-10:30"
+> ⚠️ **DİKKAT:**  
+> `Zaman Aralığı`, `Video Linki` ve `Dosya Adı` alanlarını mutlaka kendi videonuza göre değiştirin.
+
+### 📋 Kopyalanacak Şablon
+
+```plaintext
+Aşağıdaki bilgilere göre yt-dlp kodunu oluştur:
+
+- Zaman Aralığı: 02:23:20-02:23:26
+- Video Linki: https://www.youtube.com/watch?v=aiaMhBl4z4M
+- Dosya Adı: klip.mp4
 ```
 
-> **İpucu:** Süreden önceki `*` işareti zorunludur.
+Yapay zeka size **tek satırlık, çalışmaya hazır** bir komut verecektir.  
+Bu kodu kopyalayın ve bir sonraki aşamaya geçin.
+
+---
+
+## 🔴 3. Aşama: İndirmeyi Başlatma (CMD)
+
+Oluşturulan komutu bilgisayarınızda çalıştırmak için:
+
+1. **Windows + R** tuşlarına basın  
+2. Açılan pencereye `cmd` yazıp **Enter**’a basın  
+3. Araçların bulunduğu klasöre geçin:
+
+```cmd
+cd C:\YTcutter
+```
+
+4. Yapay zekanın verdiği uzun komutu **yapıştırın** (Sağ tık veya `Ctrl + V`)  
+5. **Enter**’a basarak indirmeyi başlatın
 
 ---
 
@@ -103,17 +156,13 @@ C:\YTcutter\
 
 ---
 
-## 🌐 Topluluk Katkısı
+## 👋 Son Bir Hatırlatma
 
-Verdiğimiz bilgiler işinize yaradıysa, tek isteğimiz;  
-sizin gibi yetenekli editörlerin hazırladığı editleri bu subreddit’te de paylaşmanızdır.
-
-Böylece:
-
-- Yayıncılar editleri RP’den önce hızlıca izleyebilir
-- Edit süreçleri kolaylaşır
-- Topluluk birlikte büyür
+Paylaşımlarınızı **[r/eightborn_next](https://www.reddit.com/r/eightborn_next/)** subreddit’inde  
+**“Bağlantı (Link)”** sekmesini kullanarak yaparsanız hem yayıncılar daha rahat görür hem de izlenmeleriniz artar.
 
 👉 https://www.reddit.com/r/eightborn_next/
 
-**Keyifli editlemeler 🚀**
+**Keyifli editlemeler! 🚀**
+
+---
