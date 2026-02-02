@@ -115,9 +115,9 @@ Yapay zeka görevi kabul ettikten sonra, indirmek istediğiniz **her yeni video*
 ```plaintext
 Aşağıdaki bilgilere göre yt-dlp kodunu oluştur:
 
-- Zaman Aralığı: 02:23:20-02:23:26
-- Video Linki: https://www.youtube.com/watch?v=aiaMhBl4z4M
-- Dosya Adı: klip.mp4
+- Zaman Aralığı: 02:21:35-02:21:45
+- Video Linki: https://www.youtube.com/watch?v=aPCmVzlCRGo
+- Dosya Adı: clip.mp4
 ```
 
 Yapay zeka size **tek satırlık, çalışmaya hazır** bir komut verecektir.  
