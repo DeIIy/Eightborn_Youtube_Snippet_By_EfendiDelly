@@ -6,7 +6,7 @@
 
 Öğreneceğiniz yöntemlerle hazırlayacağınız o harika içerikleri **[r/eightborn_next](https://www.reddit.com/r/eightborn_next/)** subreddit’inde bağlantı sekmesiyle  paylaşırsanız:
 
-- Link olarak paylaşıldığından izlenmeler YouTube (veya paylaştığın platform) hanene yazılır.
+- İzlenmeler doğrudan YouTube (veya ilgili platform) hanenize yansır.
 - Yayıncılar editleri sunucuya girmeden önce hızlıca kaydırarak inceleyebilir.
 - Editler dağılmadan tek bir platformda toplanır.
 - Edit süreçleri hızlanır ve sadeleşir.
